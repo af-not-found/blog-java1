@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>${log.level.stdout}</level>
+		</filter>
+		<encoder>
+			<pattern>%d [%thread] %-5level %logger{40}\(%line\) - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.rootdir}${log.filename}.log</file>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d [%thread] %-5level %logger{40}\(%line\) - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.rootdir}%d{yyyy-MM-dd}_${log.filename}.log</fileNamePattern>
+			<maxHistory>1000</maxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<root level="WARN">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+
+	<logger name="net.afnf" level="${log.level.file}" />
+
+</configuration>

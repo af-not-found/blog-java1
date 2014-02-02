@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+            web-jsptaglibrary_2_0.xsd" version="2.0">
+	<tlib-version>2.0</tlib-version>
+	
+	<!-- URL Encode -->
+	<function>
+		<name>ue</name>
+		<function-class>net.afnf.blog.common.MyFunction</function-class>
+		<function-signature>java.lang.String urlEncodeUtf8(java.lang.String)</function-signature>
+	</function>
+
+	<!-- XML Escape -->
+	<function>
+		<name>xml</name>
+		<function-class>net.afnf.blog.common.MyFunction</function-class>
+		<function-signature>java.lang.String escapeXmlString(java.lang.String)</function-signature>
+	</function>
+	
+	<!-- Javascript Escape -->
+	<function>
+		<name>js</name>
+		<function-class>net.afnf.blog.common.MyFunction</function-class>
+		<function-signature>java.lang.String escapeJavascriptString(java.lang.String)</function-signature>
+	</function>
+
+	<!-- Render blog comment HTML -->
+	<function>
+		<name>comment</name>
+		<function-class>net.afnf.blog.common.MyFunction</function-class>
+		<function-signature>java.lang.String renderComment(java.lang.String)</function-signature>
+	</function>
+
+	<!-- Format date -->
+	<function>
+		<name>date</name>
+		<function-class>net.afnf.blog.common.MyFunction</function-class>
+		<function-signature>java.lang.String formatDate(java.util.Date)</function-signature>
+	</function>
+
+	<!-- Format long time -->
+	<function>
+		<name>time</name>
+		<function-class>net.afnf.blog.common.MyFunction</function-class>
+		<function-signature>java.lang.String formatLongTime(long)</function-signature>
+	</function>
+
+	<!-- Format long time -->
+	<function>
+		<name>pubDate</name>
+		<function-class>net.afnf.blog.common.MyFunction</function-class>
+		<function-signature>java.lang.String formatPubDate(java.util.Date)</function-signature>
+	</function>
+
+	<!-- Generate title -->
+	<function>
+		<name>title</name>
+		<function-class>net.afnf.blog.common.MyFunction</function-class>
+		<function-signature>java.lang.String generateTitle(java.lang.String)</function-signature>
+	</function>
+</taglib>
