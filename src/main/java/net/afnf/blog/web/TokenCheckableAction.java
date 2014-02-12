@@ -18,6 +18,7 @@ public class TokenCheckableAction {
     protected HttpServletRequest request;
 
     public void checkToken() {
+
         if (AppConfig.getInstance().isDemoSite()) {
             throw new JsonResponseDemoSiteErrorException();
         }

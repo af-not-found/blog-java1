@@ -1,6 +1,9 @@
-INSERT INTO entries (id, title, tags, content, content_html, postdate, state) 
+
+
+
+INSERT INTO entries (title, tags, content, content_html, postdate, state) 
 VALUES 
-(2, 'タイトル-title-タイトル-title-タイトル-title-タイトル', 'tag1,tag2,タグ3', '#Markdownのテスト
+('タイトル-title-タイトル-title-タイトル-title-タイトル', 'tag1,tag2,タグ3', '#Markdownのテスト
  てすとてすとてすとて **すとてすとてす** とてすとてすとてすと。
 てすと```てすとてすとてすとてすと```てすとてすとてす _とてすとてすとてす_ とてすとてすと。
 aaaalongaaaalogaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaa
@@ -101,6 +104,4 @@ aaaalongaaaalogaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalonga
 <li><img src="/blog/static/img/email1.png" alt="alt"></li>
 </ul>
 ', '2013-11-24 05:05:03.039+09', 1);
-
-SELECT pg_catalog.setval('entries_id_seq', 3, false);
 

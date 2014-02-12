@@ -14,8 +14,8 @@ public class TokenService {
     public static final int VALID_MS = 20 * 1000;
 
     public static String getToken() {
-        String token = "" + (System.currentTimeMillis() + VALID_MS);
-        String encrypted = Crypto.encrypt(token);
+        String until = "" + (System.currentTimeMillis() + VALID_MS);
+        String encrypted = Crypto.encrypt(until);
         return encrypted;
     }
 
@@ -33,11 +33,13 @@ public class TokenService {
 
         long until = NumberUtils.toLong(token, -1);
         long now = System.currentTimeMillis();
-        if (until - VALID_MS <= now && now <= until) {
+        long diff = until - now;
+        logger.debug("valid token, diff=" + diff + ", until=" + until + ", now=" + now);
+        if (0 <= diff && diff <= VALID_MS) {
             return true;
         }
         else {
-            logger.warn("token is expired");
+            logger.warn("token is expired, diff=" + (until - now));
             return false;
         }
     }

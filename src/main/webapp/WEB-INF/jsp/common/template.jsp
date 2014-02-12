@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@page import="net.afnf.blog.bean.AppConfig"%>
 <html>
 <head>
@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" type="text/css" href="${as:url('/static/blog.min.css')}" />
 <link rel="shortcut icon" type="image/x-icon" href="${as:url('/static/img/favicon.ico')}" />
-<link title="<%= AppConfig.getInstance().getTitle() %>" rel="alternate" type="application/rss+xml" href="<c:url value='/rss.xml'/>" />
+<link title="<%=AppConfig.getInstance().getTitle()%>" rel="alternate" type="application/rss+xml" href="<c:url value='/rss.xml'/>" />
 <meta name="author" content="afnf" />
 
 <style type="text/css">
@@ -43,6 +43,10 @@
 <script>
 	var afnfblog = {};
 	afnfblog.contextRoot = "<%=request.getContextPath()%>";
+	<c:if test="${pagingList != null}">
+		afnfblog.totalPageCount = ${pagingList.totalPageCount};
+		afnfblog.thisPage = ${pagingList.thisPage};
+	</c:if>
 </script>
 </head>
 <body>
@@ -57,23 +61,11 @@
 
 	<script src="${as:url('/static/jquery-1.10.2.min.js')}"></script>
 	<script src="${as:url('/static/blog.min.js')}"></script>
-	<script>
-		$( document ).ready(function () {
-			<c:if test="${pagingList != null}">
-			    setTimeout(function(){
-		   		    <%-- 遅延させないとwindow sizeが取れない？ --%>
-			    	afnfblog.pagenator(${pagingList.totalPageCount}, ${pagingList.thisPage});
-			    }, 30);
-			</c:if>
-			afnfblog.highlight();
-			afnfblog.bindform();
-		});
-	</script>
 
 	${param.footer_script}
 
-	<div id="lean_overlay"></div>
-	<div id="alert_modal">
+	<div style="display: none;" id="lean_overlay"></div>
+	<div style="display: none;" id="alert_modal">
 		<div id="alert_text"></div>
 		<button id="close_modal" class="btn btn-primary">close</button>
 	</div>

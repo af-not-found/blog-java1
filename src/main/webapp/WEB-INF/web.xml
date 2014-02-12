@@ -75,15 +75,5 @@
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-	<error-page>
-		<exception-type>net.afnf.blog.common.JsonResponseException</exception-type>
-		<location>/WEB-INF/jsp/common/json_error.jsp</location>
-	</error-page>
-	<error-page>
-		<exception-type>net.afnf.blog.common.JsonResponseDemoSiteErrorException</exception-type>
-		<location>/WEB-INF/jsp/common/json_error_demosite.jsp</location>
-	</error-page>
-
-
+	
 </web-app>

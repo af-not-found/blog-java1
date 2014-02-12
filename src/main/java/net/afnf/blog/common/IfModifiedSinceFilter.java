@@ -45,16 +45,19 @@ public class IfModifiedSinceFilter implements Filter {
                     // Developmentなら無効化
                     if (AppConfig.getInstance().isDevelopment() == false) {
 
+                        // 304でもLast-Modifiedを入れておく
+                        res.setDateHeader("Last-Modified", getLastModified());
+
+                        // Expiresをここで入れると、proxy_cache_revalidateと機能衝突を起こすようなのでコメントアウト
+                        //res.setDateHeader("Expires", getLastModified() + 10000);
+
                         // lastModifiedと一致すれば304を返す
                         long since = req.getDateHeader("If-Modified-Since");
-                        //logger.info(" since=" + since + ", lastmod=" + getLastModified());
+                        logger.info(" since=" + since + ", lastmod=" + getLastModified());
                         if (since == getLastModified()) {
+                            logger.info(" 304");
                             res.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
                             return;
-                        }
-                        // 更新されている場合はLast-Modifiedを設定する
-                        else {
-                            res.setDateHeader("Last-Modified", getLastModified());
                         }
                     }
                 }

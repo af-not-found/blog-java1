@@ -191,6 +191,7 @@ body,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	border-spacing: 0;
 	padding-left: 10px;
 	margin-left: 10px;
+	margin-bottom: 10px;
 }
 
 .border_table_container table th {
@@ -329,7 +330,6 @@ textarea.textarea_entry {
 }
 
 #lean_overlay {
-	display: none;
 	position: fixed;
 	z-index: 100;
 	top: 0px;
@@ -340,7 +340,6 @@ textarea.textarea_entry {
 }
 
 #alert_modal {
-	display: none;
 	position: fixed;
 	left: 50%;
 	z-index: 11000;
@@ -521,6 +520,10 @@ ul ul,ol ul,ul ol,ol ol {
 	}
 	.admin_headerdiv {
 		margin-bottom: 10px;
+	}
+	.entry_edit_form_div {
+		margin-left: 8px;
+		margin-right: 8px;
 	}
 	.entry_content>ul,.entry_content>ol {
 		padding-left: 30px;

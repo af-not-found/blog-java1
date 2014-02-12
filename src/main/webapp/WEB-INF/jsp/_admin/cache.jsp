@@ -55,7 +55,7 @@
 		<script>
 			$(".btn_cache").removeClass("btn-default").addClass("btn-primary");
 			afnfblog.ajaxSuccess = function(thisform, data) {
-				location.href = location.pathname + "?elapsed=" + data.elapsed;
+				afnfblog.movePage(location.pathname + "?elapsed=" + data.elapsed);
 			};
 		</script>
 	</c:param>

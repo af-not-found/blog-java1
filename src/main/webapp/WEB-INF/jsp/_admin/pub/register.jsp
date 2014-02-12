@@ -28,9 +28,7 @@
 	<c:param name="footer_script">
 		<script>
 			afnfblog.ajaxSuccess = function(thisform, data) {
-				afnfblog.alert(t("blog.ajax_ok"), function() {
-					location.reload(false);
-				});
+				afnfblog.alert(t("blog.update_ok"), afnfblog.reloadPage);
 			};
 		</script>
 	</c:param>

@@ -29,8 +29,8 @@ public class EntryService {
         DRAFT, NORMAL, DELETE
     }
 
-    final private static int LIMIT = 30;
-    final private static int RECENTS = 8;
+    final public static int LIMIT = 30;
+    final public static int RECENTS = 8;
 
     @Autowired
     private EntryMapperCustomized em;

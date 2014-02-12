@@ -85,9 +85,7 @@
 		<script>
 			afnfblog.ajaxSuccess = function(thisform, data) {
 				thisform[0].reset();
-				afnfblog.alert(t("blog.comment_ok"), function() {
-					location.reload(false);
-				});
+				afnfblog.alert(t("blog.comment_ok"), afnfblog.reloadPage);
 			};
 
 			(function(i, s, o, g, r, a, m) {
