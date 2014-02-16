@@ -112,6 +112,8 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='entries']")).click();
         assertEquals(1, find(".summary_entry_title").size());
         wd.findElement(By.linkText("blog1234")).click();
+
+        // TODO　beforeunloadのテスト
     }
 
     @Test

@@ -12,8 +12,7 @@
 		</h3>
 
 		<div class="indent">
-			<span class="subinfo">${f:date(entry.postdate)}</span> <span class="tags_in_entry"> <c:if
-					test="${isAdminPage==false}">
+			<span class="subinfo">${f:date(entry.postdate)}</span> <span class="tags_in_entry"> <c:if test="${isAdminPage==false}">
 					<c:forEach var="tag" items="${entry.tagList}">
 						<a href='<c:url value="/t/${f:ue(tag)}" />'>${f:xml(tag)}</a>
 					</c:forEach>
@@ -30,7 +29,9 @@
 			</c:if>
 		</div>
 		<c:if test="${isAdminPage==false && entry.commentCount > 0}">
-			<div class="indent subinfo cmcount"><span data-t="blog.comments">comments</span>(${entry.commentCount})</div>
+			<div class="indent subinfo cmcount">
+				<span data-t="blog.comments">comments</span>(${entry.commentCount})
+			</div>
 		</c:if>
 	</div>
 </c:if>
@@ -43,23 +44,23 @@
 		</h3>
 
 		<div class="text-right">
-			<span class="subinfo">${f:date(entry.postdate)}</span> <span class="tags_in_entry"> <c:forEach var="tag"
-					items="${entry.tagList}">
+			<span class="tags_in_entry"> <c:forEach var="tag" items="${entry.tagList}">
 					<a href='<c:url value="/t/${f:ue(tag)}" />'>${f:xml(tag)}</a>
 				</c:forEach>
-			</span>
+			</span> <span class="indent subinfo">${f:date(entry.postdate)}</span>
 		</div>
 
 		<div class="entry_content border_table_container">${entry.contentHtml}</div>
 
 		<div class="text-right">
-			<span class="subinfo">${f:date(entry.postdate)}</span> <span class="tags_in_entry"> <c:forEach var="tag"
-					items="${entry.tagList}">
+			<span class="tags_in_entry"> <c:forEach var="tag" items="${entry.tagList}">
 					<a href='<c:url value="/t/${f:ue(tag)}" />'>${f:xml(tag)}</a>
 				</c:forEach>
-			</span>
+			</span> <span class="indent subinfo">${f:date(entry.postdate)}</span>
 		</div>
 
-		<div style="margin-top: 40px" class="cmcount"><span data-t="blog.comments">comments</span>(${entry.commentCount})</div>
+		<div style="margin-top: 40px" class="cmcount">
+			<span data-t="blog.comments">comments</span>(${entry.commentCount})
+		</div>
 	</div>
 </c:if>

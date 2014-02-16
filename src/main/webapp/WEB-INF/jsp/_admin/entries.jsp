@@ -32,15 +32,21 @@
 						</c:if>
 
 						<div style="margin-top: 20px">
-							<input type="submit" class="btn btn-primary" name="post" value="post" /> <span class="ajaxret"></span>
+							<input type="submit" class="btn btn-primary" name="post" value="post" id="submit_btn" /> <span class="ajaxret"></span>
 						</div>
 					</form:form>
 				</div>
 				<div class="col-md-9 maindiv preview_container">
-					<button class="btn btn-default btn-primary preview_width">675px</button>
-					<button class="btn btn-default preview_width">568px</button>
-					<button class="btn btn-default preview_width">358px</button>
-					<button class="btn btn-default preview_width">314px</button>
+					<button class="btn_width btn btn-default btn-primary">675px</button>
+					<button class="btn_width btn btn-default">568px</button>
+					<button class="btn_width btn btn-default">360px</button>
+					<button class="btn_width btn btn-default">314px</button>
+					<!-- 
+					<button class="btn_width btn btn-default btn-primary">630px</button>
+					<button class="btn_width btn btn-default">523px</button>
+					<button class="btn_width btn btn-default">344px</button>
+					<button class="btn_width btn btn-default">304px</button>
+					 -->
 					<div class="preview entry_content border_table_container"></div>
 				</div>
 			</div>

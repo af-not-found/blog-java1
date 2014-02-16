@@ -1,7 +1,7 @@
 <div class="col-md-3 sidebar">
 
 	<div>
-		<h3 class="sb_header">recents</h3>
+		<h3 class="sb_header">latests</h3>
 		<div class="sb_recents">
 			<c:forEach var="entry" items="${entryCache.recents}">
 				<div class="sb_entry_title" title="${f:xml(entry.title)}">
@@ -64,7 +64,7 @@
 	<div>
 		<h3 class="sb_header">author</h3>
 		<div class="sb_content">
-			afnfっていう名前でやってます。
+			afnfという名前でやってますよ
 			<div>
 				<img src='${as:url("/static/img/email1.png")}' /> <%-- <img src='${as:url("/static/img/email2.png")}' /> --%>
 			</div>
@@ -77,7 +77,7 @@
 		<h3 class="sb_header">links</h3>
 		<div class="sb_content">
 			<div>
-				<a href="http://blog.afnf.net/blogdemo/" target="_blank">デモサイト</a>
+				<a href="http://blog.afnf.net/blogdemo/" target="_blank">ブログデモサイト</a>
 			</div>
 			<div>
 				<a href="http://blog.afnf.net/blogdemo/_admin/" target="_blank">デモサイト管理画面</a>

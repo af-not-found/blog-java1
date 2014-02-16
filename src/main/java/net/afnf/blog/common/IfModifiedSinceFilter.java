@@ -49,11 +49,11 @@ public class IfModifiedSinceFilter implements Filter {
                         res.setDateHeader("Last-Modified", getLastModified());
 
                         // Expiresをここで入れると、proxy_cache_revalidateと機能衝突を起こすようなのでコメントアウト
-                        //res.setDateHeader("Expires", getLastModified() + 10000);
+                        //res.setDateHeader("Expires", getLastModified() + 1000);
 
                         // lastModifiedと一致すれば304を返す
                         long since = req.getDateHeader("If-Modified-Since");
-                        logger.info(" since=" + since + ", lastmod=" + getLastModified());
+                        //logger.info(" since=" + since + ", lastmod=" + getLastModified());
                         if (since == getLastModified()) {
                             logger.info(" 304");
                             res.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
