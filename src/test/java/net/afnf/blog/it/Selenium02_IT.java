@@ -353,4 +353,5 @@ public class Selenium02_IT extends SeleniumTestBase {
         assertThat(wd.getCurrentUrl(), endsWith("201209"));
     }
 
+    // TODO draftとdeletedを作る
 }

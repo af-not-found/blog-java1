@@ -149,6 +149,7 @@ public class BlogAction extends TokenCheckableAction {
     protected void setCommonAttribute(Model model, boolean isSummaryPage) {
         model.addAttribute("isAdminPage", false);
         model.addAttribute("isSummaryPage", isSummaryPage);
+        model.addAttribute("isProductionAndNormalSite", AppConfig.getInstance().isProductionAndNormalSite());
         model.addAttribute("entryCache", es.getEntryCache());
     }
 

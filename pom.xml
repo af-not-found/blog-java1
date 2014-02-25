@@ -400,6 +400,9 @@
 			<url>http://repo.maven.apache.org/maven2</url>
 		</pluginRepository>
 		<pluginRepository>
+			<snapshots>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
 			<id>sonatype-nexus-snapshots</id>
 			<name>Sonatype Nexus Snapshots</name>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>

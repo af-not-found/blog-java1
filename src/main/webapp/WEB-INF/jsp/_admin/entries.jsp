@@ -20,11 +20,11 @@
 						<form:textarea path="content" cssClass="form-control textarea_entry required" minlength="2" />
 						<br />
 						<form:radiobutton path="state" id="r0" value="0" cssClass="form-control radio_common stateRadio" />
-						<label for="r0">draft</label>
+						<label for="r0" class="label_draft">draft</label>
 						<form:radiobutton path="state" id="r1" value="1" cssClass="form-control radio_common stateRadio" />
 						<label for="r1">normal</label>
 						<form:radiobutton path="state" id="r2" value="2" cssClass="form-control radio_common stateRadio" />
-						<label for="r2">delete</label>
+						<label for="r2" class="label_deleted">delete</label>
 						<br />
 						<c:if test="${entry.postdate != null}">
 							<span>${f:date(entry.postdate)}</span>

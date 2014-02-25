@@ -63,6 +63,10 @@ public class AppConfig {
         return StringUtils.equalsIgnoreCase(getType(), "test");
     }
 
+    public boolean isProductionAndNormalSite() {
+        return StringUtils.equals(getType(), "production-normal");
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getType() {

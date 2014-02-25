@@ -14,6 +14,8 @@ public class TokenCheckableAction {
 
     protected static final String SUCCESS_JSON = "{\"res\":1}";
 
+    //private static Logger logger = LoggerFactory.getLogger(TokenCheckableAction.class);
+
     @Autowired
     protected HttpServletRequest request;
 
@@ -45,8 +47,12 @@ public class TokenCheckableAction {
             String[] hosts = StringUtils.split(fowarded, ",");
             if (hosts != null) {
                 int len = hosts.length;
+
                 if (len >= 1) {
                     remote = hosts[len - 1];
+                }
+                if (len >= 2 && StringUtils.indexOf(remote, "unix:") != -1) {
+                    remote = hosts[len - 2];
                 }
             }
         }

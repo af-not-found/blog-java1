@@ -118,4 +118,28 @@ public class TokenCheckableActionTest extends SpringTestBase {
         assertEquals("2.2.2.2, testua", target.getClientInfo());
     }
 
+    @Test
+    public void testGetClientInfo5() {
+        TokenCheckableAction target = new TokenCheckableAction();
+        MockHttpServletRequest mock = new MockHttpServletRequest();
+        mock.addHeader("User-Agent", "testua");
+        mock.setRemoteAddr("220.1.1.2");
+        target.request = mock;
+
+        mock.addHeader("X-Forwarded-For", "1.1.1.1,unix:");
+        assertEquals("1.1.1.1, testua", target.getClientInfo());
+    }
+
+    @Test
+    public void testGetClientInfo6() {
+        TokenCheckableAction target = new TokenCheckableAction();
+        MockHttpServletRequest mock = new MockHttpServletRequest();
+        mock.addHeader("User-Agent", "testua");
+        mock.setRemoteAddr("220.1.1.2");
+        target.request = mock;
+
+        mock.addHeader("X-Forwarded-For", "1.1.1.1,2.2.2.2,unix:");
+        assertEquals("2.2.2.2, testua", target.getClientInfo());
+    }
+
 }

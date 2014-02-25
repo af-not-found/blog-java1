@@ -128,7 +128,8 @@ body,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 }
 
 .admindiv>.summary_entries_container {
-	margin-top: 20px;
+	margin: 10px auto 0px auto;
+	max-width: 600px;
 }
 
 .admindiv .summary_entry_container {
@@ -222,6 +223,10 @@ body,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	margin-left: 30px;
 }
 
+.indent_short {
+	margin-left: 10px;
+}
+
 .tags_in_entry {
 	font-size: 90%;
 	margin-left: 10px;
@@ -266,6 +271,14 @@ body,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	overflow: hidden;
 }
 
+.label_draft {
+	color: #ffa0a0;
+}
+
+.label_deleted {
+	color: #8888bb;
+}
+
 .state_draft {
 	font-weight: bold;
 	color: #ffa0a0;
@@ -274,7 +287,7 @@ body,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 
 .state_deleted {
 	font-weight: bold;
-	color: #999999;
+	color: #8888bb;
 	margin-left: 10px;
 }
 
