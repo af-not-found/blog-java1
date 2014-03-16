@@ -97,20 +97,16 @@
 				<version>9.1.0.v20131115</version>
 				<executions>
 					<execution>
-						<id>start-jetty</id>
+						<id>run-forked-jetty</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>stop</goal>
-							<goal>start</goal>
+							<goal>run-forked</goal>
 						</goals>
 						<configuration>
-							<systemProperties>
-								<force>true</force>
-								<systemProperty>
-									<name>jetty.port</name>
-									<value>${selenium.jettyport}</value>
-								</systemProperty>
-							</systemProperties>
+							<contextPath>/${pom.contextPath}</contextPath>
+							<jvmArgs>-Djetty.port=${selenium.jettyport} ${jacocoArgs}</jvmArgs>
+							<waitForChild>false</waitForChild>
 							<reload>manual</reload>
 							<scanIntervalSeconds>0</scanIntervalSeconds>
 							<daemon>true</daemon>
@@ -149,7 +145,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.6.5-SNAPSHOT</version>
+				<version>0.6.5.201403032054</version>
 				<executions>
 					<execution>
 						<id>prepare-agent</id>
@@ -167,12 +163,17 @@
 						<exclude>net/afnf/blog/domain/**</exclude>
 						<exclude>net/afnf/blog/mapper/**</exclude>
 					</excludes>
+					<propertyName>jacocoArgs</propertyName>
+					<append>true</append>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.16</version>
+				<configuration>
+					<argLine>${jacocoArgs}</argLine>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -384,12 +385,12 @@
 
 	<repositories>
 		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
 			<id>central</id>
 			<name>Central Repository</name>
 			<url>http://repo.maven.apache.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 
@@ -398,14 +399,9 @@
 			<id>central</id>
 			<name>Central Repository</name>
 			<url>http://repo.maven.apache.org/maven2</url>
-		</pluginRepository>
-		<pluginRepository>
 			<snapshots>
-				<updatePolicy>never</updatePolicy>
+				<enabled>false</enabled>
 			</snapshots>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</pluginRepository>
 	</pluginRepositories>
 
