@@ -82,6 +82,7 @@ body,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
+	margin-bottom: 3px;
 }
 
 .sb_header {
@@ -155,28 +156,28 @@ body,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 
 .entry_content h1 {
 	font-size: 20px;
-	margin-top: 30px;
+	margin-top: 38px;
 	border-left: 5px solid #428BCA;
 	padding-left: 10px;
 }
 
 .entry_content h2 {
 	font-size: 18px;
-	margin-top: 30px;
+	margin-top: 36px;
 	border-left: 4px solid #428BCA;
 	padding-left: 8px;
 }
 
 .entry_content h3 {
 	font-size: 16px;
-	margin-top: 28px;
+	margin-top: 34px;
 	border-left: 3px solid #428BCA;
 	padding-left: 6px;
 }
 
 .entry_content h4 {
 	font-size: 14px;
-	margin-top: 26px;
+	margin-top: 32px;
 	border-left: 2px solid #428BCA;
 	padding-left: 6px;
 }
@@ -511,19 +512,19 @@ ul ul,ol ul,ul ol,ol ol {
 	}
 	.entry_content h1 {
 		font-size: 17px;
-		margin-top: 28px;
+		margin-top: 34px;
 	}
 	.entry_content h2 {
 		font-size: 16px;
-		margin-top: 26px;
+		margin-top: 32px;
 	}
 	.entry_content h3 {
 		font-size: 15px;
-		margin-top: 24px;
+		margin-top: 30px;
 	}
 	.entry_content h4 {
 		font-size: 14px;
-		margin-top: 22px;
+		margin-top: 28px;
 	}
 	.maindiv>.comments_container {
 		padding-left: 8px;

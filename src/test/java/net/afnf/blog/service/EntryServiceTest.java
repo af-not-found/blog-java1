@@ -200,7 +200,7 @@ public class EntryServiceTest extends SpringTestBase {
             Entry entry = es.getEntry(expectedId);
             assertEquals("tag5,タグ3", entry.getTags());
             assertEquals("コンテンツ" + expectedId, entry.getContent());
-            assertThat(entry.getPostdate().getTime(), is(greaterThan(prevPostdate.getTime())));
+            assertThat("check server date first", entry.getPostdate().getTime(), is(greaterThan(prevPostdate.getTime())));
         }
 
     }
