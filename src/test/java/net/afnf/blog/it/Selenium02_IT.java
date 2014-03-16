@@ -44,12 +44,14 @@ public class Selenium02_IT extends SeleniumTestBase {
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='cache']")).click();
 
-        assertEquals("3", wd.findElement(By.className("totalNormalCount")).getText());
-        assertEquals("5", wd.findElement(By.className("tagCount")).getText());
-        assertEquals("1", wd.findElement(By.className("monthCount")).getText());
-
-        wd.findElement(By.name("update")).click();
-        waitForLoaded();
+        // Selenium02_IT単体で実行した場合は、このブロックに入らない
+        String totalNormalCountActual = wd.findElement(By.className("totalNormalCount")).getText();
+        if (StringUtils.equals("3", totalNormalCountActual)) {
+            assertEquals("5", wd.findElement(By.className("tagCount")).getText());
+            assertEquals("1", wd.findElement(By.className("monthCount")).getText());
+            wd.findElement(By.name("update")).click();
+            waitForLoaded();
+        }
 
         assertEquals("10004", wd.findElement(By.className("totalNormalCount")).getText());
         assertEquals("18", wd.findElement(By.className("tagCount")).getText());
@@ -60,6 +62,10 @@ public class Selenium02_IT extends SeleniumTestBase {
     public void test202_user() {
 
         wd.get(baseurl);
+        assertEquals(
+                "Markdownのテスト1234789\ntitle10000\ntitle9999\ntitle9998\ntitle9997\ntitle9996\ntitle9995\ntitle9994\nmore...",
+                find(".sb_recents").get(0).getText());
+
         wd.findElement(By.cssSelector("div.col-md-9.maindiv")).click();
         wd.findElement(By.linkText("3")).click();
         wd.findElement(By.linkText("8")).click();
@@ -353,5 +359,39 @@ public class Selenium02_IT extends SeleniumTestBase {
         assertThat(wd.getCurrentUrl(), endsWith("201209"));
     }
 
-    // TODO draftとdeletedを作る
+    @Test
+    public void test207_admin() {
+
+        wd.get(baseurl + "/_admin/entries/");
+        assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
+        assertElementNotFound(".state_draft");
+        assertElementNotFound(".state_deleted");
+
+        wd.get(baseurl + "/_admin/entries/10000");
+        assertEquals(baseurl + "/_admin/entries/10000", wd.getCurrentUrl());
+        wd.findElement(By.id("r2")).click();
+        postAndWait();
+        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+
+        wd.get(baseurl + "/_admin/entries/10002");
+        assertEquals(baseurl + "/_admin/entries/10002", wd.getCurrentUrl());
+        wd.findElement(By.id("r0")).click();
+        postAndWait();
+        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+
+        wd.get(baseurl + "/_admin/entries/");
+        assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
+        assertEquals(1, find(".state_draft").size());
+        assertEquals(1, find(".state_deleted").size());
+    }
+
+    @Test
+    public void test208_user() {
+
+        wd.get(baseurl);
+        assertEquals(
+                "Markdownのテスト1234789\ntitle10000\ntitle9998\ntitle9996\ntitle9995\ntitle9994\ntitle9993\ntitle9992\nmore...",
+                find(".sb_recents").get(0).getText());
+    }
+
 }
