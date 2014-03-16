@@ -42,7 +42,7 @@ if(1==1){
 </ol>
 </li>
 </ol>
-', '2014-02-09 17:47:37.825738+09', 1);
+', now(), 1);
 INSERT INTO entries VALUES (2, 'ブログ12345', 'tag1, tag3, タグa', '#テスト
 aaa|bbb|ccc
 ---|---|---
@@ -75,7 +75,7 @@ aaa|bbb|ccc
 </tr>
 </tbody>
 </table>
-', '2014-02-09 17:49:06.155+09', 1);
+', now(), 1);
 INSERT INTO entries VALUES (3, 'Markdownのテスト1234', 'tag1, tag3, タグa, タグb', '#Markdownのテスト1234
  てすとてすとてすとて **すとてすとてす** とてすとてすとてすと。
 てすと```てすとてすとてすとてすと```てすとてすとてす _とてすとてすとてす_ とてすとてすと。
@@ -188,7 +188,7 @@ aaaalongaaaalogaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalonga
 <li><a href="http://localhost">ローカルホスト1</a></li>
 <li><img src="//upload.wikimedia.org/wikipedia/commons/a/ad/Wikipedia-logo-v2-ja.png" alt="alt"></li>
 </ul>
-', '2014-02-09 17:50:12.696562+09', 1);
+', now(), 1);
 
 
 
@@ -196,14 +196,14 @@ aaaalongaaaalogaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalonga
 
 
 
-INSERT INTO comments VALUES (1, 1, NULL, 'test2', 'aaaaaaa"aaaaaa', '2014-02-09 17:48:01.523738+09', '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
+INSERT INTO comments VALUES (1, 1, NULL, 'test2', 'aaaaaaa"aaaaaa', now(), '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
 INSERT INTO comments VALUES (2, 1, NULL, 'test2', 'aaaaaaaabbbbbbbbbbbbb
  ああああああ<script>location.href=''/b'';</script>ああああaaa"aa
-<b>aaa</b>', '2014-02-09 17:48:30.484551+09', '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 1);
+<b>aaa</b>', now(), '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 1);
 INSERT INTO comments VALUES (3, 1, NULL, 'test3', 'aaaaaaabbbbbb
  あああ
 <b>aaa</b> vv', '2014-02-09 17:48:49.161979+09', '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 2);
-INSERT INTO comments VALUES (4, 1, NULL, 'aaaa', 'bbbbbbbb', '2014-02-09 17:49:34.776876+09', '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
+INSERT INTO comments VALUES (4, 1, NULL, 'aaaa', 'bbbbbbbb', now(), '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
 INSERT INTO comments VALUES (5, 2, NULL, 'ああああああああああああ', 'aaaaaaaabbbbbbbbbbbbb
  ああああああああああaaaaa
 <b>aaa</b>jfdytr
@@ -213,10 +213,10 @@ INSERT INTO comments VALUES (5, 2, NULL, 'ああああああああああああ',
 i7tfjyg
 
 
-fj75rfjytft', '2014-02-09 17:49:50.847498+09', '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
-INSERT INTO comments VALUES (6, 3, NULL, 'aaa', 'bbbbb', '2014-02-09 17:50:29.123565+09', '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
-INSERT INTO comments VALUES (7, 3, NULL, 'vvvvv', 'cccccccc', '2014-02-09 17:50:37.836357+09', '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
-INSERT INTO comments VALUES (8, 3, NULL, 'dddddd', 'vvvvvvvvvvvvvvvvvvv', '2014-02-09 17:50:46.500044+09', '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
+fj75rfjytft', now(), '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
+INSERT INTO comments VALUES (6, 3, NULL, 'aaa', 'bbbbb', now(), '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
+INSERT INTO comments VALUES (7, 3, NULL, 'vvvvv', 'cccccccc', now(), '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
+INSERT INTO comments VALUES (8, 3, NULL, 'dddddd', 'vvvvvvvvvvvvvvvvvvv', now(), '127.0.0.1, Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34', 0);
 
 
 
