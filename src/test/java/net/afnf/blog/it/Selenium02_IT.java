@@ -1,8 +1,6 @@
 package net.afnf.blog.it;
 
 import static org.hamcrest.Matchers.endsWith;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -73,9 +71,7 @@ public class Selenium02_IT extends SeleniumTestBase {
         wd.findElement(By.linkText("20")).click();
         wd.findElement(By.linkText("26")).click();
         wd.findElement(By.linkText(">")).click();
-        wd.findElement(By.cssSelector("div.summary_entries_container")).click();
         wd.findElement(By.linkText(">")).click();
-        wd.findElement(By.cssSelector("body")).click();
         wd.findElement(By.linkText(">")).click();
         wd.findElement(By.linkText("35")).click();
         wd.findElement(By.linkText("Sep 2012")).click();
@@ -102,9 +98,7 @@ public class Selenium02_IT extends SeleniumTestBase {
         wd.findElement(By.linkText("20")).click();
         wd.findElement(By.linkText("26")).click();
         wd.findElement(By.linkText("32")).click();
-        wd.findElement(By.cssSelector("body")).click();
         wd.findElement(By.linkText("38")).click();
-        wd.findElement(By.cssSelector("body")).click();
         wd.findElement(By.linkText("44")).click();
         find(".sb_tag a").get(3).click();
         wd.findElement(By.linkText("14")).click();
@@ -162,7 +156,7 @@ public class Selenium02_IT extends SeleniumTestBase {
         wd.findElement(By.linkText("title9132")).click();
         wd.findElement(By.id("r2")).click();
         postAndWait();
-        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet(".ajaxform");
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='comments']")).click();
         wd.findElement(By.linkText("6")).click();
@@ -371,13 +365,13 @@ public class Selenium02_IT extends SeleniumTestBase {
         assertEquals(baseurl + "/_admin/entries/10000", wd.getCurrentUrl());
         wd.findElement(By.id("r2")).click();
         postAndWait();
-        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet(".ajaxform");
 
         wd.get(baseurl + "/_admin/entries/10002");
         assertEquals(baseurl + "/_admin/entries/10002", wd.getCurrentUrl());
         wd.findElement(By.id("r0")).click();
         postAndWait();
-        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet(".ajaxform");
 
         wd.get(baseurl + "/_admin/entries/");
         assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());

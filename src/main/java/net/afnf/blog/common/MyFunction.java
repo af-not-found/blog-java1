@@ -29,7 +29,7 @@ public class MyFunction {
     }
 
     public static final String escapeXmlString(String str) {
-        return StringEscapeUtils.escapeXml(str);
+        return StringEscapeUtils.escapeXml11(str);
     }
 
     public static final String escapeJavascriptString(String str) {
@@ -46,7 +46,7 @@ public class MyFunction {
     }
 
     public static final String renderComment(String str) {
-        str = StringEscapeUtils.escapeXml(str);
+        str = StringEscapeUtils.escapeXml11(str);
         str = newline2br(str);
         return str;
     }

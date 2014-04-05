@@ -2,6 +2,7 @@ package net.afnf.blog.it;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import net.afnf.blog.mapper.EntryMapperCustomized;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Rule;
@@ -38,6 +40,7 @@ public class SeleniumTestBase extends SpringTestBase {
 
     protected static final long POST_WAIT = 500;
     protected static final long NO_ELEMENT_WAIT = 200;
+    protected static final long AJAX_WAIT = 200;
     protected static final long IMPLICITLY_WAIT = 15000;
 
     protected static String baseurl;
@@ -121,6 +124,21 @@ public class SeleniumTestBase extends SpringTestBase {
         wd.findElement(By.name("post")).click();
         waitForLoaded();
         wd.findElement(By.id("close_modal")).click();
+    }
+
+    protected void assertAjaxRet(String filter) {
+
+        int i = 0;
+        do {
+            AfnfUtil.sleep(AJAX_WAIT);
+            String ret1 = find(filter + " .ajaxret").get(0).getText();
+            if (StringUtils.isNotBlank(ret1)) {
+                return;
+            }
+        }
+        while (++i <= 2);
+
+        fail("ajaxRet is blank");
     }
 
     public static void takeScreenShot(WebDriver wd, String suffix) {

@@ -2,10 +2,9 @@ package net.afnf.blog.it;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.endsWith;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -87,9 +86,20 @@ public class Selenium01_IT extends SeleniumTestBase {
                 .sendKeys(
                         "#てすと123\nabc\n\n#code\n````\nif(1==1){\n    alert(1)\n}\n````\n\n#point\n1. aaega\n1. 433\n1. 4343\n 1. 224\n 1. あああ");
         postAndWait();
-        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet(".ajaxform");
         assertEquals("1", find("#id").get(0).getAttribute("value"));
         assertEquals(1, em.countWithCond(null).intValue());
+
+        // postボタンが無効状態であること
+        assertEquals("true", wd.findElement(By.name("post")).getAttribute("disabled"));
+
+        // postできるようにtitle変更
+        wd.findElement(By.id("title")).click();
+        wd.findElement(By.id("title")).clear();
+        wd.findElement(By.id("title")).sendKeys("blog12");
+
+        // postボタンが有効状態であること
+        assertNull(wd.findElement(By.name("post")).getAttribute("disabled"));
 
         postAndWait();
         assertEquals("1", find("#id").get(0).getAttribute("value"));
@@ -97,7 +107,7 @@ public class Selenium01_IT extends SeleniumTestBase {
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='entries']")).click();
         assertEquals(1, find(".summary_entry_title").size());
-        wd.findElement(By.linkText("blog1")).click();
+        wd.findElement(By.linkText("blog12")).click();
         wd.findElement(By.id("title")).click();
         wd.findElement(By.id("title")).clear();
         wd.findElement(By.id("title")).sendKeys("blog1234");
@@ -107,7 +117,7 @@ public class Selenium01_IT extends SeleniumTestBase {
                 .sendKeys(
                         "#てすと123\nabc\n\n#code\n````\nif(1==1){\n    alert(1)\n}\n````\n\n#point\n1. aaega\n1. 433\n1. 4343\n 1. 224\n 1. あああ\n 1. bbb");
         postAndWait();
-        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet(".ajaxform");
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='entries']")).click();
         assertEquals(1, find(".summary_entry_title").size());
@@ -126,7 +136,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         assertEquals(1, find(".sb_month").size());
 
         wd.findElement(By.linkText("blog1234")).click();
-        wd.findElement(By.cssSelector(".comments_container")).click();
+        assertEquals(1, find(".comments_container").size());
         assertElementNotFound(".comments_container .comment");
 
         wd.findElement(By.id("name")).click();
@@ -137,7 +147,6 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.id("content")).sendKeys("aaaaaaa\"aaaaaa");
         postAndCloseModal();
 
-        wd.findElement(By.cssSelector(".comments_container")).click();
         assertEquals(1, find(".comments_container .comment").size());
         assertElementNotFound(".comments_container .comment_content");
 
@@ -215,7 +224,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.id("content")).sendKeys("#テスト\naaa|bbb|ccc\n---|---|---\n1|2|3\nああああ|いいいいい|うううううう\n#|*|abbb");
         wd.findElement(By.id("r0")).click(); // draft
         postAndWait();
-        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet(".ajaxform");
         assertEquals("2", find("#id").get(0).getAttribute("value"));
         assertEquals(2, em.countWithCond(null).intValue());
 
@@ -246,7 +255,6 @@ public class Selenium01_IT extends SeleniumTestBase {
                 "aaaaaaaabbbbbbbbbbbbb\n ああああああ<script>location.href='/b';</script>ああああaaa\"aa\n<b>aaa</b>");
         postAndCloseModal();
 
-        wd.findElement(By.cssSelector(".comments_container")).click();
         assertEquals(4, find(".comments_container .comment").size());
         assertElementNotFound(".comments_container .comment_content");
 
@@ -265,7 +273,6 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.id("content")).sendKeys("aaaaaaabbbbbb\n あああ\n<b>aaa</b> vv");
         postAndCloseModal();
 
-        wd.findElement(By.cssSelector(".comments_container")).click();
         assertEquals(5, find(".comments_container .comment").size());
         assertElementNotFound(".comments_container .comment_content");
 
@@ -305,7 +312,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.id("r1")).click(); // normal
         wd.findElement(By.cssSelector("span")).click();
         postAndWait();
-        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet(".ajaxform");
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='entries']")).click();
         assertEquals(2, find(".summary_entry_title").size());
@@ -317,7 +324,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         assertElementNotFound(".comments_container .deleted_comment");
         wd.findElement(By.id("c2_r1")).click();
         waitForLoaded();
-        assertThat(find("#c2 .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet("#c2");
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='comments']")).click();
         assertEquals(5, find(".comments_container .comment_content").size());
@@ -326,7 +333,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         assertElementNotFound(".comments_container .deleted_comment");
         wd.findElement(By.id("c3_r2")).click();
         waitForLoaded();
-        assertThat(find("#c3 .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet("#c3");
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='comments']")).click();
         assertEquals(5, find(".comments_container .comment_content").size());
@@ -413,7 +420,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.cssSelector("span.md_element")).click();
 
         postAndWait();
-        assertThat(find(".ajaxform .ajaxret").get(0).getText(), is(not("")));
+        assertAjaxRet(".ajaxform");
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='cache']")).click();
         wd.findElement(By.name("update")).click();
