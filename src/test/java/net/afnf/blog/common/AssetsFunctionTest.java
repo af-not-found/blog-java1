@@ -50,27 +50,27 @@ public class AssetsFunctionTest {
         {
             version++;
             url = AssetsFunction.convertAssetUrl("/static/test1.min.js");
-            assertEquals("http://test.local/context/static/test1.min.js?v=" + version, url);
+            assertEquals("http://test.local/context/static/test1.min.js;v=" + version, url);
         }
         {
             url = AssetsFunction.convertAssetUrl("/static/test1.min.js");
-            assertEquals("http://test.local/context/static/test1.min.js?v=" + version, url);
+            assertEquals("http://test.local/context/static/test1.min.js;v=" + version, url);
         }
         {
             touch("src/test/data/assets/from/test1.min.js/1_test.js");
             version++;
             url = AssetsFunction.convertAssetUrl("/static/test1.min.js");
-            assertEquals("http://test.local/context/static/test1.min.js?v=" + version, url);
+            assertEquals("http://test.local/context/static/test1.min.js;v=" + version, url);
         }
         {
             url = AssetsFunction.convertAssetUrl("/static/test1.min.js");
-            assertEquals("http://test.local/context/static/test1.min.js?v=" + version, url);
+            assertEquals("http://test.local/context/static/test1.min.js;v=" + version, url);
         }
         {
             touch("src/test/data/assets/from/test1.min.js/2_test.js");
             version++;
             url = AssetsFunction.convertAssetUrl("/static/test1.min.js");
-            assertEquals("http://test.local/context/static/test1.min.js?v=" + version, url);
+            assertEquals("http://test.local/context/static/test1.min.js;v=" + version, url);
         }
     }
 
@@ -84,27 +84,27 @@ public class AssetsFunctionTest {
         String url;
         {
             url = AssetsFunction.convertAssetUrl("/static/test2.min.css");
-            assertEquals("http://test.local/context/static/test2.min.css?v=" + version, url);
+            assertEquals("http://test.local/context/static/test2.min.css;v=" + version, url);
         }
         {
             url = AssetsFunction.convertAssetUrl("/static/test2.min.css");
-            assertEquals("http://test.local/context/static/test2.min.css?v=" + version, url);
+            assertEquals("http://test.local/context/static/test2.min.css;v=" + version, url);
         }
         {
             touch("src/test/data/assets/from/test2.min.css/1_test.js");
             version++;
             url = AssetsFunction.convertAssetUrl("/static/test2.min.css");
-            assertEquals("http://test.local/context/static/test2.min.css?v=" + version, url);
+            assertEquals("http://test.local/context/static/test2.min.css;v=" + version, url);
         }
         {
             url = AssetsFunction.convertAssetUrl("/static/test2.min.css");
-            assertEquals("http://test.local/context/static/test2.min.css?v=" + version, url);
+            assertEquals("http://test.local/context/static/test2.min.css;v=" + version, url);
         }
         {
             touch("src/test/data/assets/from/test2.min.css/2_test.js");
             version++;
             url = AssetsFunction.convertAssetUrl("/static/test2.min.css");
-            assertEquals("http://test.local/context/static/test2.min.css?v=" + version, url);
+            assertEquals("http://test.local/context/static/test2.min.css;v=" + version, url);
         }
     }
 
@@ -117,11 +117,11 @@ public class AssetsFunctionTest {
         String url;
         {
             url = AssetsFunction.convertAssetUrl("/static/test3.min.js");
-            assertEquals("http://test.local/context/static/test3.min.js?v=" + version, url);
+            assertEquals("http://test.local/context/static/test3.min.js;v=" + version, url);
         }
         {
             url = AssetsFunction.convertAssetUrl("/static/test3.min.js");
-            assertEquals("http://test.local/context/static/test3.min.js?v=" + version, url);
+            assertEquals("http://test.local/context/static/test3.min.js;v=" + version, url);
         }
     }
 

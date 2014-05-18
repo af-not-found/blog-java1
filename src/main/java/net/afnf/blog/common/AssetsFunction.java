@@ -115,7 +115,7 @@ public class AssetsFunction {
         sb.append(appConfig.getAssetsBaseurl());
         sb.append(path);
         if (version != null) {
-            sb.append("?v=");
+            sb.append(";v=");
             sb.append(version);
         }
         return sb.toString();

@@ -27,19 +27,19 @@
 	background-image: url('${as:url("/static/img/top_800.jpg")}');
 }
 
-@media ( max-width : 700px) {
+@media screen and (max-width : 700px) {
 	.headerdiv {
 		background-image: url('${as:url("/static/img/top_540.jpg")}');
 	}
 }
 
-@media ( max-width : 540px) {
+@media screen and (max-width : 540px) {
 	.headerdiv {
 		background-image: url('${as:url("/static/img/top_440.jpg")}');
 	}
 }
 
-@media ( max-width : 330px) {
+@media screen and (max-width : 330px) {
 	.headerdiv {
 		background-image: url('${as:url("/static/img/top_330.jpg")}');
 	}
