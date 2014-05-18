@@ -25,19 +25,18 @@ import org.slf4j.LoggerFactory;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Selenium01_IT extends SeleniumTestBase {
 
-    @Test
-    public void test100_user() {
-        wd.get(baseurl);
-        assertElementNotFound(".summary_entry_title");
-        assertElementNotFound(".sb_entry_title");
-        assertElementNotFound(".sb_tag");
-        assertElementNotFound(".sb_month");
+    private static Logger logger = LoggerFactory.getLogger(Selenium01_IT.class);
 
-        assertEquals(0, StringUtils.countMatches(getRssString(), "<item>"));
+    @Test
+    public void test101_init() {
+
+        // DB初期化
+        executeSql("classpath:sql/db-schema.sql");
     }
 
     @Test
-    public void test101_admin() {
+    public void test102_admin() {
+
         wd.get(baseurl + "/_admin/entries/");
         assertThat(wd.getCurrentUrl(), startsWith(baseurl + "/_admin/pub/login"));
 
@@ -70,6 +69,34 @@ public class Selenium01_IT extends SeleniumTestBase {
         assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
 
         assertElementNotFound(".summary_entry_title");
+
+        // キャッシュ更新
+        wd.findElement(By.xpath("//div[@class='btn-group']//button[.='cache']")).click();
+        wd.findElement(By.name("update")).click();
+        waitForLoaded();
+
+        assertEquals("0", wd.findElement(By.className("totalNormalCount")).getText());
+        assertEquals("0", wd.findElement(By.className("tagCount")).getText());
+        assertEquals("0", wd.findElement(By.className("monthCount")).getText());
+    }
+
+    @Test
+    public void test103_user() {
+
+        wd.get(baseurl);
+        assertElementNotFound(".summary_entry_title");
+        assertElementNotFound(".sb_entry_title");
+        assertElementNotFound(".sb_tag");
+        assertElementNotFound(".sb_month");
+
+        assertEquals(0, StringUtils.countMatches(getRssString(), "<item>"));
+    }
+
+    @Test
+    public void test104_admin() {
+
+        wd.get(baseurl + "/_admin/entries/");
+        assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
 
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='new']")).click();
         assertEquals("-1", find("#id").get(0).getAttribute("value"));
@@ -122,12 +149,10 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='entries']")).click();
         assertEquals(1, find(".summary_entry_title").size());
         wd.findElement(By.linkText("blog1234")).click();
-
-        // TODO　beforeunloadのテスト
     }
 
     @Test
-    public void test102_user() {
+    public void test105_user() {
 
         wd.get(baseurl);
         assertEquals(1, find(".summary_entry_title").size());
@@ -162,10 +187,8 @@ public class Selenium01_IT extends SeleniumTestBase {
         assertEquals(1, StringUtils.countMatches(getRssString(), "<item>"));
     }
 
-    private static Logger logger = LoggerFactory.getLogger(Selenium02_IT.class);
-
     @Test
-    public void test103_user() {
+    public void test106_user() {
         wd.get(baseurl);
 
         long future = System.currentTimeMillis() + TokenService.VALID_MS * 2 + 1000;
@@ -206,7 +229,7 @@ public class Selenium01_IT extends SeleniumTestBase {
     }
 
     @Test
-    public void test104_admin() {
+    public void test107_admin() {
         wd.get(baseurl + "/_admin/entries/");
         assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
 
@@ -235,7 +258,7 @@ public class Selenium01_IT extends SeleniumTestBase {
     }
 
     @Test
-    public void test105_user() {
+    public void test108_user() {
 
         wd.get(baseurl);
 
@@ -299,7 +322,7 @@ public class Selenium01_IT extends SeleniumTestBase {
     }
 
     @Test
-    public void test106_admin() {
+    public void test109_admin() {
         wd.get(baseurl + "/_admin/entries/");
         assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
 
@@ -343,7 +366,7 @@ public class Selenium01_IT extends SeleniumTestBase {
     }
 
     @Test
-    public void test107_user() {
+    public void test110_user() {
 
         wd.get(baseurl);
         assertEquals(2, find(".summary_entry_title").size());
@@ -397,7 +420,7 @@ public class Selenium01_IT extends SeleniumTestBase {
     }
 
     @Test
-    public void test108_admin() {
+    public void test111_admin() {
         wd.get(baseurl + "/_admin/entries/");
         assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
 
@@ -432,7 +455,7 @@ public class Selenium01_IT extends SeleniumTestBase {
     }
 
     @Test
-    public void test109_user() {
+    public void test112_user() {
 
         wd.get(baseurl);
         assertEquals(3, find(".summary_entry_title").size());

@@ -24,9 +24,10 @@ import org.openqa.selenium.WebElement;
 public class Selenium02_IT extends SeleniumTestBase {
 
     @Test
-    public void test201_admin() {
+    public void test201_init() {
 
-        // 10000件投入
+        // DB初期化、10000件投入
+        executeSql("classpath:sql/db-schema.sql");
         executeSql("classpath:sql/db-testdata-copy10000.sql");
 
         wd.get(baseurl + "/_admin/entries/");
@@ -38,18 +39,10 @@ public class Selenium02_IT extends SeleniumTestBase {
         wd.findElement(By.name("j_password")).sendKeys("pass");
         postAndWait();
 
-        assertEquals(30, find(".summary_entry_title").size());
-
+        // キャッシュ更新
         wd.findElement(By.xpath("//div[@class='btn-group']//button[.='cache']")).click();
-
-        // Selenium02_IT単体で実行した場合は、このブロックに入らない
-        String totalNormalCountActual = wd.findElement(By.className("totalNormalCount")).getText();
-        if (StringUtils.equals("3", totalNormalCountActual)) {
-            assertEquals("5", wd.findElement(By.className("tagCount")).getText());
-            assertEquals("1", wd.findElement(By.className("monthCount")).getText());
-            wd.findElement(By.name("update")).click();
-            waitForLoaded();
-        }
+        wd.findElement(By.name("update")).click();
+        waitForLoaded();
 
         assertEquals("10004", wd.findElement(By.className("totalNormalCount")).getText());
         assertEquals("18", wd.findElement(By.className("tagCount")).getText());
@@ -330,14 +323,14 @@ public class Selenium02_IT extends SeleniumTestBase {
         wd.findElement(By.cssSelector(".next a")).click();
         assertThat(wd.getCurrentUrl(), endsWith("201004"));
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
-        String yyyyMM = sdf.format(new Date());
         wd.findElement(By.linkText("Sep 2012")).click();
 
         wd.findElement(By.cssSelector(".next a")).click();
         assertThat(wd.getCurrentUrl(), endsWith("201210"));
 
         wd.findElement(By.cssSelector(".next a")).click();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+        String yyyyMM = sdf.format(new Date());
         assertThat(wd.getCurrentUrl(), endsWith(yyyyMM));
 
         wd.findElement(By.cssSelector(".previous a")).click();
