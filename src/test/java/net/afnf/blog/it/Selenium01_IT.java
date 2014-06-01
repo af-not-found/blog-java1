@@ -191,7 +191,7 @@ public class Selenium01_IT extends SeleniumTestBase {
     public void test106_user() {
         wd.get(baseurl);
 
-        long future = System.currentTimeMillis() + TokenService.VALID_MS * 2 + 1000;
+        long future = System.currentTimeMillis() + TokenService.VALID_MS * 3;
         long past = System.currentTimeMillis() - 1;
 
         String[] tokens = {
