@@ -55,7 +55,7 @@ public class IfModifiedSinceFilter implements Filter {
                         long since = req.getDateHeader("If-Modified-Since");
                         //logger.info(" since=" + since + ", lastmod=" + getLastModified());
                         if (since == getLastModified()) {
-                            logger.info(" 304");
+                            // logger.info(" 304");
                             res.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
                             return;
                         }

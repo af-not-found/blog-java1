@@ -143,6 +143,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.id("content"))
                 .sendKeys(
                         "#てすと123\nabc\n\n#code\n````\nif(1==1){\n    alert(1)\n}\n````\n\n#point\n1. aaega\n1. 433\n1. 4343\n 1. 224\n 1. あああ\n 1. bbb");
+        wd.findElement(By.id("r1")).click(); // normal
         postAndWait();
         assertAjaxRet(".ajaxform");
 
@@ -245,7 +246,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.id("content")).click();
         wd.findElement(By.id("content")).clear();
         wd.findElement(By.id("content")).sendKeys("#テスト\naaa|bbb|ccc\n---|---|---\n1|2|3\nああああ|いいいいい|うううううう\n#|*|abbb");
-        wd.findElement(By.id("r0")).click(); // draft
+        // wd.findElement(By.id("r0")).click(); デフォルトでdraft
         postAndWait();
         assertAjaxRet(".ajaxform");
         assertEquals("2", find("#id").get(0).getAttribute("value"));
@@ -439,6 +440,7 @@ public class Selenium01_IT extends SeleniumTestBase {
         wd.findElement(By.id("tags")).click();
         wd.findElement(By.id("tags")).clear();
         wd.findElement(By.id("tags")).sendKeys("tag1, tag3, タグa, タグb");
+        wd.findElement(By.id("r1")).click(); // normal
 
         wd.findElement(By.cssSelector("span.md_element")).click();
 

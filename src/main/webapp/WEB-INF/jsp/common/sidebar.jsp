@@ -92,6 +92,9 @@
 				<a href="https://play.google.com/store/apps/details?id=com.appspot.afnf4199ga.twawm" target="_blank">twawm for WM3800R</a>
 			</div>
 			<div>
+				<a href="https://play.google.com/store/apps/details?id=net.afnf.and.twawm2" target="_blank">twawm2 for NAD11</a>
+			</div>
+			<div>
 				<a href="http://w.livedoor.jp/twawm/" target="_blank">twawm wiki</a>
 			</div>
 			<div>

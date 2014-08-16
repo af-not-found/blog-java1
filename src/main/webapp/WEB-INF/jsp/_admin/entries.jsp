@@ -41,12 +41,6 @@
 					<button class="btn_width btn btn-default">568px</button>
 					<button class="btn_width btn btn-default">360px</button>
 					<button class="btn_width btn btn-default">314px</button>
-					<!-- 
-					<button class="btn_width btn btn-default btn-primary">630px</button>
-					<button class="btn_width btn btn-default">523px</button>
-					<button class="btn_width btn btn-default">344px</button>
-					<button class="btn_width btn btn-default">304px</button>
-					 -->
 					<div class="preview entry_content border_table_container"></div>
 				</div>
 			</div>

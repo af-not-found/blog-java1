@@ -35,10 +35,6 @@ public class EntriesAction extends TokenCheckableAction {
 
         model.addAttribute("pagingList", es.getEntriesWithDeleted(page));
 
-        Entry newEntry = new Entry();
-        newEntry.setState((short) EntryState.NORMAL.ordinal());
-        model.addAttribute("entry", newEntry);
-
         model.addAttribute("isAdminPage", true);
         model.addAttribute("isSummaryPage", true);
 
@@ -54,7 +50,7 @@ public class EntriesAction extends TokenCheckableAction {
         else {
             entry = new Entry();
             entry.setId(-1);
-            entry.setState((short) EntryState.NORMAL.ordinal());
+            entry.setState((short) EntryState.DRAFT.ordinal());
         }
         model.addAttribute("entry", entry);
 

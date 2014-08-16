@@ -136,7 +136,7 @@ public class BlogAction extends TokenCheckableAction {
         StringBuilder sb = new StringBuilder();
         sb.append(comment.getName());
         sb.append("\n");
-        sb.append(comment.getName());
+        sb.append(comment.getContent());
         sb.append("\n\n");
         sb.append(AppConfig.getInstance().getAdminHost());
         sb.append(request.getServletContext().getContextPath());
