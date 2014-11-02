@@ -13,12 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.afnf.blog.bean.AppConfig;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class IfModifiedSinceFilter implements Filter {
 
-    private static Logger logger = LoggerFactory.getLogger(IfModifiedSinceFilter.class);
+    //private static Logger logger = LoggerFactory.getLogger(IfModifiedSinceFilter.class);
 
     private static long lastModified = 0;
 
