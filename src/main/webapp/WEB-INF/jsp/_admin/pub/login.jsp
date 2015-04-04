@@ -14,11 +14,11 @@
 			<form name="f" action="<c:url value="/_admin/pub/auth"/>" class="form-horizontal validate" method="POST">
 
 				<div class="form-group">
-					<label>id</label> <input type="text" name="j_username" class="form-control input_short_text required" minlength="4" />
+					<label>id</label> <input type="text" name="username" class="form-control input_short_text required" minlength="4" />
 				</div>
 
 				<div class="form-group">
-					<label>password</label> <input type="password" name="j_password" class="form-control input_short_text required" minlength="4" />
+					<label>password</label> <input type="password" name="password" class="form-control input_short_text required" minlength="4" />
 				</div>
 
 				<c:set var="isDevelopment"><%=AppConfig.getInstance().isDemoSite()%></c:set>

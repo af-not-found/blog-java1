@@ -5,22 +5,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
+
 	<global-method-security pre-post-annotations="enabled" />
 
 	<http pattern="/static/**" security="none" />
 
-	<http use-expressions="true" auto-config="true">
+	<http>
 		<intercept-url pattern="/_admin/pub/**" access="permitAll" />
 		<intercept-url pattern="/_admin/**" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/**" access="permitAll" />
 
-		<form-login login-page="/_admin/pub/login" login-processing-url="/_admin/pub/auth" authentication-failure-url="/_admin/pub/login?faliled" default-target-url="/_admin/" />
+		<form-login login-page="/_admin/pub/login" login-processing-url="/_admin/pub/auth" authentication-failure-url="/_admin/pub/login?faliled"
+			default-target-url="/_admin/" />
 		<remember-me />
 		<headers>
+			<cache-control disabled="true" />
 			<content-type-options />
+			<hsts disabled="true" />
 			<frame-options />
 			<xss-protection />
 		</headers>
+		<csrf disabled="true" />
 	</http>
 
 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
@@ -29,7 +34,7 @@
 
 	<beans:bean id="myUserDetailService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
 		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="usersByUsernameQuery" value="select username, password, 'true' from users where username = ?" />
+		<beans:property name="usersByUsernameQuery" value="select username, password, true from users where username = ?" />
 		<beans:property name="authoritiesByUsernameQuery" value="select username, role from users where username = ?" />
 	</beans:bean>
 

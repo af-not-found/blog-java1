@@ -10,7 +10,6 @@ import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
@@ -22,18 +21,18 @@ public class Selenium03_IT extends SeleniumTestBase {
     public void test301_init() {
 
         // DB初期化、10000件投入
-        executeSql("classpath:sql/db-schema.sql");
-        executeSql("classpath:sql/db-testdata-copy10000.sql");
+        executeSql("/sql/db-schema.sql");
+        executeSql("/sql/db-testdata-copy10000.sql");
 
         wd.get(baseurl + "/_admin/entries/");
         assertThat(wd.getCurrentUrl(), startsWith(baseurl + "/_admin/pub/login"));
 
-        wd.findElement(By.name("j_username")).click();
-        wd.findElement(By.name("j_username")).clear();
-        wd.findElement(By.name("j_username")).sendKeys("admin");
-        wd.findElement(By.name("j_password")).click();
-        wd.findElement(By.name("j_password")).clear();
-        wd.findElement(By.name("j_password")).sendKeys("pass");
+        wd.findElement(By.name("username")).click();
+        wd.findElement(By.name("username")).clear();
+        wd.findElement(By.name("username")).sendKeys("admin");
+        wd.findElement(By.name("password")).click();
+        wd.findElement(By.name("password")).clear();
+        wd.findElement(By.name("password")).sendKeys("pass");
         postAndWait();
 
         // キャッシュ更新
@@ -98,7 +97,7 @@ public class Selenium03_IT extends SeleniumTestBase {
     public void test303_admin() {
 
         // 論理削除
-        executeSql("classpath:sql/db-logical-delete.sql");
+        executeSql("/sql/db-logical-delete.sql");
 
         wd.get(baseurl + "/_admin/entries/");
         assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
@@ -134,7 +133,7 @@ public class Selenium03_IT extends SeleniumTestBase {
     public void test305_admin() {
 
         // 論理削除
-        executeSql("classpath:sql/db-truncate.sql");
+        executeSql("/sql/db-truncate.sql");
 
         wd.get(baseurl + "/_admin/entries/");
         assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());

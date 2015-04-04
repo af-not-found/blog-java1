@@ -221,7 +221,7 @@ INSERT INTO comments VALUES (8, 3, NULL, 'dddddd', 'vvvvvvvvvvvvvvvvvvv', now(),
 
 
 
-INSERT INTO users VALUES (1, 'admin', '$2a$08$aF4JfKSih28HZuwNjaOGAuk4GBLVXfI1vkSMYRrugbp9/WFxbEwV2', 'ADMIN');
+INSERT INTO users VALUES (1, 'admin', '$2a$08$aF4JfKSih28HZuwNjaOGAuk4GBLVXfI1vkSMYRrugbp9/WFxbEwV2', 'ROLE_ADMIN');
 
 
 

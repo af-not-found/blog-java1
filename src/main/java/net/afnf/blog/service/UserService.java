@@ -31,7 +31,7 @@ public class UserService {
         User user = new User();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
-        user.setRole("ADMIN");
+        user.setRole("ROLE_ADMIN");
         um.insertSelective(user);
 
         if (getUserCount() != 1) {

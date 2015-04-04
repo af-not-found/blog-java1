@@ -31,7 +31,7 @@ public class Selenium01_IT extends SeleniumTestBase {
     public void test101_init() {
 
         // DB初期化
-        executeSql("classpath:sql/db-schema.sql");
+        executeSql("/sql/db-schema.sql");
     }
 
     @Test
@@ -49,22 +49,22 @@ public class Selenium01_IT extends SeleniumTestBase {
         postAndCloseModal();
         assertThat(wd.getCurrentUrl(), startsWith(baseurl + "/_admin/pub/login"));
 
-        wd.findElement(By.name("j_username")).click();
-        wd.findElement(By.name("j_username")).clear();
-        wd.findElement(By.name("j_username")).sendKeys("admin");
-        wd.findElement(By.name("j_password")).click();
-        wd.findElement(By.name("j_password")).clear();
-        wd.findElement(By.name("j_password")).sendKeys("test");
+        wd.findElement(By.name("username")).click();
+        wd.findElement(By.name("username")).clear();
+        wd.findElement(By.name("username")).sendKeys("admin");
+        wd.findElement(By.name("password")).click();
+        wd.findElement(By.name("password")).clear();
+        wd.findElement(By.name("password")).sendKeys("test");
         postAndWait();
         assertThat(wd.getCurrentUrl(), startsWith(baseurl + "/_admin/pub/login"));
         assertThat(wd.getCurrentUrl(), containsString("faliled"));
 
-        wd.findElement(By.name("j_username")).click();
-        wd.findElement(By.name("j_username")).clear();
-        wd.findElement(By.name("j_username")).sendKeys("admin");
-        wd.findElement(By.name("j_password")).click();
-        wd.findElement(By.name("j_password")).clear();
-        wd.findElement(By.name("j_password")).sendKeys("pass");
+        wd.findElement(By.name("username")).click();
+        wd.findElement(By.name("username")).clear();
+        wd.findElement(By.name("username")).sendKeys("admin");
+        wd.findElement(By.name("password")).click();
+        wd.findElement(By.name("password")).clear();
+        wd.findElement(By.name("password")).sendKeys("pass");
         postAndWait();
         assertEquals(baseurl + "/_admin/entries/", wd.getCurrentUrl());
 
