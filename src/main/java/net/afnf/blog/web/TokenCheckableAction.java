@@ -10,7 +10,7 @@ import net.afnf.blog.service.TokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class TokenCheckableAction {
+public abstract class TokenCheckableAction {
 
     protected static final String SUCCESS_JSON = "{\"res\":1}";
 
@@ -26,7 +26,7 @@ public class TokenCheckableAction {
         }
 
         if (StringUtils.equalsIgnoreCase(request.getMethod(), "POST")) {
-            if (StringUtils.equals(request.getHeader("X-Requested-With"), "XMLHttpRequest")) {
+            if (StringUtils.equalsIgnoreCase(request.getHeader("X-Requested-With"), "XMLHttpRequest")) {
                 String token = request.getHeader("X-FORM-TOKEN");
                 if (TokenService.validateToken(token)) {
                     return;
@@ -37,7 +37,7 @@ public class TokenCheckableAction {
         throw new JsonResponseException();
     }
 
-    public String getClientInfo() {
+    protected String getClientInfo() {
 
         StringBuilder sb = new StringBuilder();
 

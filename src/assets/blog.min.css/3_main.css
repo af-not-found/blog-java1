@@ -444,7 +444,7 @@ ul ul,ol ul,ul ol,ol ol {
 	padding-left: 30px;
 }
 
-@media ( min-width : 1150px) {
+@media screen and ( min-width : 1150px) {
 	.entry_edit_parent_div {
 		width: 1130px;
 	}
@@ -453,7 +453,7 @@ ul ul,ol ul,ul ol,ol ol {
 	}
 }
 
-@media ( max-width : 919px) {
+@media screen and ( max-width : 919px) {
 	.sidebar {
 		margin-top: 40px;
 		margin-left: 60px;
@@ -480,14 +480,14 @@ ul ul,ol ul,ul ol,ol ol {
 	}
 }
 
-@media ( max-width : 700px) {
+@media screen and ( max-width : 700px) {
 	.headerdiv h1 {
 		font-size: 34px;
 		padding-left: 40px;
 	}
 }
 
-@media ( max-width : 540px) {
+@media screen and ( max-width : 540px) {
 	.headerdiv h1 {
 		font-size: 32px;
 		padding-left: 20px;
@@ -551,7 +551,7 @@ ul ul,ol ul,ul ol,ol ol {
 	}
 }
 
-@media ( max-width : 330px) {
+@media screen and ( max-width : 330px) {
 	.headerdiv h1 {
 		font-size: 28px;
 		padding-left: 5px;

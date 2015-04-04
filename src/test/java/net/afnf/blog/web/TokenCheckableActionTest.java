@@ -22,7 +22,7 @@ public class TokenCheckableActionTest extends SpringTestBase {
         String prevType = AppConfig.getInstance().getType();
 
         AppConfig.getInstance().setType("demo");
-        TokenCheckableAction target = new TokenCheckableAction();
+        TokenCheckableAction target = new BlogAction();
         try {
             target.checkToken();
             fail();
@@ -37,7 +37,7 @@ public class TokenCheckableActionTest extends SpringTestBase {
 
     @Test
     public void testCheckToken2() {
-        TokenCheckableAction target = new TokenCheckableAction();
+        TokenCheckableAction target = new BlogAction();
         MockHttpServletRequest mock = new MockHttpServletRequest();
         target.request = mock;
 
@@ -73,7 +73,7 @@ public class TokenCheckableActionTest extends SpringTestBase {
 
     @Test
     public void testGetClientInfo1() {
-        TokenCheckableAction target = new TokenCheckableAction();
+        TokenCheckableAction target = new BlogAction();
         MockHttpServletRequest mock = new MockHttpServletRequest();
         mock.addHeader("User-Agent", "testua");
         mock.setRemoteAddr("220.1.1.2");
@@ -84,7 +84,7 @@ public class TokenCheckableActionTest extends SpringTestBase {
 
     @Test
     public void testGetClientInfo2() {
-        TokenCheckableAction target = new TokenCheckableAction();
+        TokenCheckableAction target = new BlogAction();
         MockHttpServletRequest mock = new MockHttpServletRequest();
         mock.addHeader("User-Agent", "testua");
         mock.setRemoteAddr("220.1.1.2");
@@ -96,7 +96,7 @@ public class TokenCheckableActionTest extends SpringTestBase {
 
     @Test
     public void testGetClientInfo3() {
-        TokenCheckableAction target = new TokenCheckableAction();
+        TokenCheckableAction target = new BlogAction();
         MockHttpServletRequest mock = new MockHttpServletRequest();
         mock.addHeader("User-Agent", "testua");
         mock.setRemoteAddr("220.1.1.2");
@@ -108,7 +108,7 @@ public class TokenCheckableActionTest extends SpringTestBase {
 
     @Test
     public void testGetClientInfo4() {
-        TokenCheckableAction target = new TokenCheckableAction();
+        TokenCheckableAction target = new BlogAction();
         MockHttpServletRequest mock = new MockHttpServletRequest();
         mock.addHeader("User-Agent", "testua");
         mock.setRemoteAddr("220.1.1.2");
@@ -120,7 +120,7 @@ public class TokenCheckableActionTest extends SpringTestBase {
 
     @Test
     public void testGetClientInfo5() {
-        TokenCheckableAction target = new TokenCheckableAction();
+        TokenCheckableAction target = new BlogAction();
         MockHttpServletRequest mock = new MockHttpServletRequest();
         mock.addHeader("User-Agent", "testua");
         mock.setRemoteAddr("220.1.1.2");
@@ -132,7 +132,7 @@ public class TokenCheckableActionTest extends SpringTestBase {
 
     @Test
     public void testGetClientInfo6() {
-        TokenCheckableAction target = new TokenCheckableAction();
+        TokenCheckableAction target = new BlogAction();
         MockHttpServletRequest mock = new MockHttpServletRequest();
         mock.addHeader("User-Agent", "testua");
         mock.setRemoteAddr("220.1.1.2");
