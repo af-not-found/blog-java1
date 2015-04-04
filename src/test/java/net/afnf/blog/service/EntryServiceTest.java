@@ -64,7 +64,7 @@ public class EntryServiceTest extends SpringTestBase {
 
         // 2件目の登録
         expectedId = 2;
-        executeSql("classpath:sql/db-testdata-entry-1.sql");
+        executeSql("/sql/db-testdata-entry-1.sql");
 
         // チェック
         {
