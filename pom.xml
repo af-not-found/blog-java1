@@ -97,6 +97,18 @@
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.1.0.v20131115</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.ow2.asm</groupId>
+						<artifactId>asm</artifactId>
+						<version>5.0.2</version>
+					</dependency>
+					<dependency>
+						<groupId>org.ow2.asm</groupId>
+						<artifactId>asm-commons</artifactId>
+						<version>5.0.2</version>
+					</dependency>
+				</dependencies>
 				<executions>
 					<execution>
 						<id>run-forked-jetty</id>
