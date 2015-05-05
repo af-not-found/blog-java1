@@ -10,7 +10,7 @@ ALTER SEQUENCE users_id_seq    RESTART with 2;
 
 
 
-INSERT INTO entries VALUES (1, 'blog1234', 'tag1,tag2,tag3', '#てすと123
+INSERT INTO entries VALUES (1, 'blog1234', 'tag1, tag2, tag3', '#てすと123
 abc
 
 #code
@@ -233,7 +233,7 @@ insert into entries
 	(title, tags, content, content_html, postdate, state)
 select
 	'title' || s.a, 
-	x.tags || ',tag' || (s.a % 16),
+	x.tags || ', tag' || (s.a % 16),
 	x.content, 
 	x.content_html, 
 	date '2010-2-1' + (s.a / 10),

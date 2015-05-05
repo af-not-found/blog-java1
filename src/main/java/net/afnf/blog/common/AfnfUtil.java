@@ -18,7 +18,7 @@ public class AfnfUtil {
         ArrayList<String> list = new ArrayList<String>();
 
         if (StringUtils.isNotBlank(tags)) {
-            String[] values = StringUtils.split(tags + ",", ",");
+            String[] values = StringUtils.split(tags, ",");
             Set<String> set = new LinkedHashSet<String>();
             for (int j = 0; j < values.length; j++) {
                 String tag = StringUtils.strip(values[j], " \u3000");
@@ -30,6 +30,11 @@ public class AfnfUtil {
         }
 
         return list;
+    }
+
+    public static String normalizegTag(String tags) {
+        List<String> list = getTagList(tags);
+        return StringUtils.join(list, ", ");
     }
 
     public static void sleep(long ms) {

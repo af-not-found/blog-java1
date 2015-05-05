@@ -75,6 +75,9 @@ public class EntryService {
 
     public void insertOrUpdate(Integer id, Entry newEntry, boolean updatePostdate) {
 
+        // タグの正規化
+        newEntry.setTags(AfnfUtil.normalizegTag(newEntry.getTags()));
+
         // 編集
         if (id >= 0) {
             newEntry.setId(id);

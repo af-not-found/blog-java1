@@ -51,7 +51,7 @@ public class EntryServiceTest extends SpringTestBase {
             assertEquals(1, list.getTotalCount());
             Entry entry = list.getEntries().get(0);
             assertEquals(expectedId, entry.getId().intValue());
-            assertEquals("tag1,tag3", entry.getTags());
+            assertEquals("tag1, tag3", entry.getTags());
         }
         {
             list = es.getEntriesByTag("tag3", 1);
@@ -72,7 +72,7 @@ public class EntryServiceTest extends SpringTestBase {
             assertEquals(2, list.getTotalCount());
             Entry entry = list.getEntries().get(0);
             assertEquals(expectedId, entry.getId().intValue());
-            assertEquals("tag1,tag2,タグ3", entry.getTags());
+            assertEquals("tag1, tag2, タグ3", entry.getTags());
         }
         {
             list = es.getEntriesByTag("tag1", 1);
@@ -138,7 +138,7 @@ public class EntryServiceTest extends SpringTestBase {
         Date prevPostdate = null;
         {
             Entry entry = es.getEntry(expectedId);
-            assertEquals("tag1,tag5,タグ3", entry.getTags());
+            assertEquals("tag1, tag5, タグ3", entry.getTags());
             prevPostdate = entry.getPostdate();
         }
 
@@ -168,7 +168,7 @@ public class EntryServiceTest extends SpringTestBase {
         }
         {
             Entry entry = es.getEntry(expectedId);
-            assertEquals("tag5,タグ3", entry.getTags());
+            assertEquals("tag5, タグ3", entry.getTags());
             assertEquals(prevPostdate, entry.getPostdate());
         }
 
@@ -198,7 +198,7 @@ public class EntryServiceTest extends SpringTestBase {
         }
         {
             Entry entry = es.getEntry(expectedId);
-            assertEquals("tag5,タグ3", entry.getTags());
+            assertEquals("tag5, タグ3", entry.getTags());
             assertEquals("コンテンツ" + expectedId, entry.getContent());
             assertThat("check server date first", entry.getPostdate().getTime(), is(greaterThan(prevPostdate.getTime())));
         }

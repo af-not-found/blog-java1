@@ -51,4 +51,18 @@ public class AfnfUtilTest {
         assertEquals("tag3", tagList.get(index++));
         assertEquals("tag4", tagList.get(index++));
     }
+
+    @Test
+    public void testNormalizegTag() {
+
+        assertEquals("", AfnfUtil.normalizegTag(null));
+        assertEquals("", AfnfUtil.normalizegTag(""));
+        assertEquals("", AfnfUtil.normalizegTag(" "));
+        assertEquals("", AfnfUtil.normalizegTag(" ,, "));
+        assertEquals("", AfnfUtil.normalizegTag(" , ,  , ,,,, , "));
+        assertEquals("tag1, tag2, tag3", AfnfUtil.normalizegTag("tag1,tag2,tag3"));
+        assertEquals("tag1, tag2, tag3", AfnfUtil.normalizegTag("tag1,,tag2,,tag3,tag3"));
+        assertEquals("tag1, tag2, tag3, tag4",
+                AfnfUtil.normalizegTag(",,,,tag1,,tag2,,tag3,tag3  , , ,     ,, tag4 ,,  tag1,tag1,"));
+    }
 }

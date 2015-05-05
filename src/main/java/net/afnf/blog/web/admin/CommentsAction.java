@@ -1,7 +1,6 @@
 package net.afnf.blog.web.admin;
 
 import net.afnf.blog.domain.Comment;
-import net.afnf.blog.mapper.CommentMapperCustomized;
 import net.afnf.blog.service.CommentService;
 import net.afnf.blog.web.TokenCheckableAction;
 
@@ -21,8 +20,6 @@ public class CommentsAction extends TokenCheckableAction {
 
     @Autowired
     private CommentService cs;
-    @Autowired
-    private CommentMapperCustomized cm;
 
     @RequestMapping(value = "/_admin/comments", method = RequestMethod.GET)
     public String index(@RequestParam(value = "page", required = false) Integer page, Model model) {

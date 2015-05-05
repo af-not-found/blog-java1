@@ -23,10 +23,10 @@
 			on e.id = c.entryid
 		<where>
 			<if test="filter == true">
-				state = 1
+				e.state = 1
 			</if>
 			<if test="tag != null">
-				and tags like '%'||#{tag,jdbcType=VARCHAR}||'%'
+				and ', '||e.tags||', ' like '%, '||#{tag,jdbcType=VARCHAR}||', %'
 			</if>
 			<if test="month != null">
 				and to_char(date_trunc('month', e.postdate), 'YYYYMM') = #{month,jdbcType=VARCHAR}
@@ -50,7 +50,7 @@
 				e.state = 1
 			</if>
 			<if test="tag != null">
-				and e.tags like '%'||#{tag,jdbcType=VARCHAR}||'%'
+				and ', '||e.tags||', ' like '%, '||#{tag,jdbcType=VARCHAR}||', %'
 			</if>
 			<if test="month != null">
 				and to_char(date_trunc('month', e.postdate), 'YYYYMM') = #{month,jdbcType=VARCHAR}

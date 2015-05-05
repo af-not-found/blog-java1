@@ -3,7 +3,7 @@
 
 INSERT INTO entries (title, tags, content, content_html, postdate, state) 
 VALUES 
-('タイトル-title-タイトル-title-タイトル-title-タイトル', 'tag1,tag2,タグ3', '#Markdownのテスト
+('タイトル-title-タイトル-title-タイトル-title-タイトル', 'tag1, tag2, タグ3', '#Markdownのテスト
  てすとてすとてすとて **すとてすとてす** とてすとてすとてすと。
 てすと```てすとてすとてすとてすと```てすとてすとてす _とてすとてすとてす_ とてすとてすと。
 aaaalongaaaalogaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaaaalongaa

@@ -28,7 +28,7 @@ public class RssAction {
 
         response.setContentType("application/rss+xml; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        List<Entry> entries = es.getEntriesByTag("", 1).getEntries();
+        List<Entry> entries = es.getEntriesByTag(null, 1).getEntries();
 
         sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         sb.append("<rss version=\"2.0\"><channel><title>blog.afnf.net</title><link>http://blog.afnf.net/blog</link><language>ja</language>\n");
