@@ -40,7 +40,12 @@ public abstract class SpringTestBase {
         rdp.setContinueOnError(false);
 
         JdbcTemplate template = new JdbcTemplate(dataSource);
-        Connection conn = DataSourceUtils.getConnection(template.getDataSource());
-        rdp.populate(conn);
+
+        try (Connection conn = DataSourceUtils.getConnection(template.getDataSource());) {
+            rdp.populate(conn);
+        }
+        catch (Exception e) {
+            throw new IllegalStateException("executeSql failed, path=" + path, e);
+        }
     }
 }
