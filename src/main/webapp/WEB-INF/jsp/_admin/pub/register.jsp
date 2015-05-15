@@ -4,7 +4,7 @@
 
 	<c:param name="body_content">
 
-		<div class="login_container">
+		<div class="container login_container">
 
 			<div class="login_info" data-t="blog.reg_admin">reg_admin</div>
 
