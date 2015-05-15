@@ -23,7 +23,7 @@
 
 					<c:if test="${currentTag != null}">
 						<div class="matched_label">
-							<div class="label label-success">${f:xml(currentTag)}(${pagingList.totalCount})</div>
+							<div class="label label-success">${f:xml(currentTag)} (${pagingList.totalCount})</div>
 						</div>
 						<script>
 							afnfblog.pagingPath = "/t/${f:ue(currentTag)}?page=";
@@ -31,7 +31,7 @@
 					</c:if>
 					<c:if test="${currentMonth != null}">
 						<div class="matched_label">
-							<div class="label label-success">${f:xml(currentMonth)}(${pagingList.totalCount})</div>
+							<div class="label label-success">${f:xml(currentMonth)} (${pagingList.totalCount})</div>
 						</div>
 					</c:if>
 

@@ -52,7 +52,7 @@ public class AppConfig {
     }
 
     public boolean isDevelopment() {
-        return StringUtils.indexOf(getTitle(), "dev-") == 0;
+        return StringUtils.startsWith(getTitle(), "dev-");
     }
 
     public boolean isDemoSite() {

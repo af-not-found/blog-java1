@@ -56,6 +56,9 @@ public class CommentService {
     }
 
     public void updateCommentState(Integer id, Short state) {
+        if (id == null || state == null) {
+            throw new NullPointerException("id or state is null, id=" + id + ", state=" + state);
+        }
         Comment newComment = new Comment();
         newComment.setId(id);
         newComment.setState(state);
