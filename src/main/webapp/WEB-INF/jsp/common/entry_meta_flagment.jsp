@@ -17,7 +17,7 @@
 
 	<c:if test="${isAdminPage == false && isProductionAndNormalSite == true}">
 		<span class="indent_short"> <a href="http://b.hatena.ne.jp/entry/http://blog.afnf.net/blog/${entry.id}"> <img
-				src="http://b.hatena.ne.jp/entry/image/http://blog.afnf.net/blog/${entry.id}">
+				src="http://b.hatena.ne.jp/entry/image/http://blog.afnf.net/blog/${entry.id}" height="13px">
 		</a>
 		</span>
 	</c:if>
